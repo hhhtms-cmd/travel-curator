@@ -5,280 +5,220 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meridian & Co. — Bespoke Travel Curation</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-–g-deep:   #182820;
-–g-mid:    #223A2C;
-–g-light:  #2D4E3A;
-–g-mist:   #3D6150;
-–iv:       #F3EDE3;
-–iv-warm:  #EAE2D6;
-–iv-text:  #EEE8DE;
-–iv-dim:   #AEBDB4;
-–rose:     #C08660;
-–rose-lt:  #D09A72;
-–ink:      #1A2B1F;
-–ink-mid:  #364D3C;
-–ink-mute: #6B7D70;
-–serif:  ‘Playfair Display’, Georgia, serif;
-–serif2: ‘Cormorant Garamond’, Georgia, serif;
-–sans:   ‘Jost’, sans-serif;
+–black: #111111;
+–dark:  #1E1E1E;
+–mid:   #444444;
+–gray:  #777777;
+–lt:    #BBBBBB;
+–border:#D8D8D8;
+–off:   #F4F4F4;
+–white: #FFFFFF;
+–serif: ‘Playfair Display’, Georgia, serif;
+–sans:  ‘Jost’, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
-body { background: var(–iv); color: var(–ink); font-family: var(–sans); font-weight: 300; overflow-x: hidden; }
+body { background: var(–white); color: var(–black); font-family: var(–sans); font-weight: 300; overflow-x: hidden; }
 
-/* FADE IN */
-.fi { opacity: 0; transform: translateY(30px); transition: opacity 0.95s cubic-bezier(.4,0,.2,1), transform 0.95s cubic-bezier(.4,0,.2,1); }
-.fi.on { opacity: 1; transform: none; }
-.d1 { transition-delay: .15s; }
-.d2 { transition-delay: .30s; }
-.d3 { transition-delay: .45s; }
-
-/* NAV */
+/* ── NAV ── */
 nav {
 position: fixed; top: 0; left: 0; right: 0; z-index: 100;
 display: flex; align-items: center; justify-content: space-between;
-padding: 30px 64px;
-transition: all .45s ease;
+padding: 22px 64px;
+background: var(–black);
 }
-nav.sc { padding: 18px 64px; background: rgba(24,40,32,.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(192,134,96,.18); }
-.n-logo { font-family: var(–serif); font-size: 1.05rem; letter-spacing: .08em; color: var(–iv-text); }
-.n-links { display: flex; gap: 44px; list-style: none; }
-.n-links a { font-family: var(–sans); font-size: .67rem; font-weight: 300; letter-spacing: .18em; text-transform: uppercase; color: rgba(238,232,222,.52); text-decoration: none; transition: color .3s; }
-.n-links a:hover { color: var(–iv-text); }
-.n-cta { font-family: var(–sans); font-size: .67rem; font-weight: 400; letter-spacing: .15em; text-transform: uppercase; color: var(–iv-text); border: 1px solid rgba(238,232,222,.38); padding: 11px 26px; text-decoration: none; transition: all .3s; }
-.n-cta:hover { background: var(–iv-text); color: var(–g-deep); }
+.n-logo { font-family: var(–serif); font-size: 1.15rem; color: var(–white); letter-spacing: .04em; }
+.n-links { display: flex; gap: 40px; list-style: none; }
+.n-links a { font-family: var(–sans); font-size: .7rem; font-weight: 400; letter-spacing: .16em; text-transform: uppercase; color: var(–lt); text-decoration: none; transition: color .25s; }
+.n-links a:hover { color: var(–white); }
+.n-cta { font-family: var(–sans); font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; background: var(–white); color: var(–black); padding: 11px 26px; text-decoration: none; transition: background .25s, color .25s; }
+.n-cta:hover { background: var(–lt); }
 
-/* HERO */
-#hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.h-bg {
-position: absolute; inset: 0;
-background: url(‘https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1800&q=80’) center 30%/cover no-repeat;
+/* ── HERO — pure black, no image ── */
+#hero {
+background: var(–black);
+min-height: 100vh;
+display: flex; align-items: center;
+padding: 140px 64px 80px;
 }
-.h-bg::after {
-content: ‘’; position: absolute; inset: 0;
-background: linear-gradient(160deg, rgba(24,40,32,.87) 0%, rgba(24,40,32,.52) 50%, rgba(24,40,32,.74) 100%);
+.hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+.hero-label {
+font-family: var(–sans); font-size: .72rem; font-weight: 400; letter-spacing: .28em; text-transform: uppercase;
+color: var(–gray); margin-bottom: 48px;
+display: flex; align-items: center; gap: 20px;
 }
-.h-corner { position: absolute; z-index: 3; width: 56px; height: 56px; }
-.h-corner.tl { top: 100px; left: 64px; border-top: 1px solid rgba(192,134,96,.35); border-left: 1px solid rgba(192,134,96,.35); }
-.h-corner.br { bottom: 80px; right: 64px; border-bottom: 1px solid rgba(192,134,96,.35); border-right: 1px solid rgba(192,134,96,.35); }
-.h-content { position: relative; z-index: 2; text-align: center; padding: 0 32px; max-width: 920px; }
-.h-eye {
-font-family: var(–sans); font-size: .62rem; letter-spacing: .32em; text-transform: uppercase;
-color: var(–rose-lt); margin-bottom: 36px;
-display: flex; align-items: center; justify-content: center; gap: 18px;
-opacity: 0; animation: up 1s .3s forwards;
+.hero-label::after { content: ‘’; flex: 0 0 56px; height: 1px; background: var(–mid); }
+.hero-h1 {
+font-family: var(–serif); font-size: clamp(3.5rem, 7vw, 7rem); font-weight: 700;
+line-height: 1.05; color: var(–white); margin-bottom: 48px; max-width: 900px;
 }
-.h-eye::before,.h-eye::after { content: ‘’; width: 30px; height: 1px; background: var(–rose); opacity: .55; }
-.h-head {
-font-family: var(–serif); font-size: clamp(2.8rem,5.8vw,5rem); font-weight: 400;
-line-height: 1.1; color: var(–iv-text); margin-bottom: 32px;
-opacity: 0; animation: up 1s .55s forwards;
+.hero-h1 em { font-style: italic; font-weight: 400; color: var(–lt); }
+.hero-sub {
+font-family: var(–sans); font-size: clamp(1rem, 1.6vw, 1.25rem); font-weight: 300;
+color: var(–gray); line-height: 1.8; max-width: 560px; margin-bottom: 56px;
 }
-.h-head em { font-style: italic; color: var(–rose-lt); }
-.h-sub {
-font-family: var(–serif2); font-size: clamp(1.1rem,2vw,1.4rem); font-style: italic; font-weight: 300;
-color: rgba(238,232,222,.70); line-height: 1.75; max-width: 580px; margin: 0 auto 56px;
-opacity: 0; animation: up 1s .8s forwards;
-}
-.h-acts { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: up 1s 1.05s forwards; }
-.h-scroll {
-position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%);
-display: flex; flex-direction: column; align-items: center; gap: 12px; z-index: 2;
-opacity: 0; animation: up 1s 1.5s forwards;
-}
-.h-scroll span { font-family: var(–sans); font-size: .57rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(238,232,222,.32); }
-.h-line { width: 1px; height: 52px; background: linear-gradient(to bottom, rgba(192,134,96,.65), transparent); animation: pulse 2.2s ease-in-out infinite; }
+.hero-acts { display: flex; gap: 16px; flex-wrap: wrap; }
 
-/* BUTTONS */
-.btn-s {
-font-family: var(–sans); font-size: .67rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 400;
-background: var(–rose); color: var(–iv-text); padding: 16px 40px; text-decoration: none; border: 1px solid var(–rose); transition: all .35s; display: inline-block;
-}
-.btn-s:hover { background: transparent; color: var(–rose-lt); border-color: var(–rose-lt); }
-.btn-g {
-font-family: var(–sans); font-size: .67rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 300;
-background: transparent; color: var(–iv-text); padding: 16px 40px; text-decoration: none; border: 1px solid rgba(238,232,222,.3); transition: all .35s; display: inline-block;
-}
-.btn-g:hover { border-color: rgba(238,232,222,.65); }
-.btn-dk {
-font-family: var(–sans); font-size: .67rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 400;
-background: var(–iv-text); color: var(–g-deep); padding: 18px 48px; text-decoration: none; border: 1px solid var(–iv-text); transition: all .35s; display: inline-block;
-}
-.btn-dk:hover { background: transparent; color: var(–iv-text); }
-.btn-dg {
-font-family: var(–sans); font-size: .67rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 300;
-background: transparent; color: var(–iv-text); padding: 18px 48px; text-decoration: none; border: 1px solid rgba(238,232,222,.28); transition: all .35s; display: inline-block;
-}
-.btn-dg:hover { border-color: rgba(238,232,222,.6); }
+/* ── BUTTONS ── */
+.btn-w { font-family: var(–sans); font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; background: var(–white); color: var(–black); padding: 18px 48px; text-decoration: none; border: 2px solid var(–white); transition: all .25s; display: inline-block; }
+.btn-w:hover { background: transparent; color: var(–white); }
+.btn-b { font-family: var(–sans); font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; background: var(–black); color: var(–white); padding: 18px 48px; text-decoration: none; border: 2px solid var(–black); transition: all .25s; display: inline-block; }
+.btn-b:hover { background: transparent; color: var(–black); }
+.btn-ob { font-family: var(–sans); font-size: .72rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; background: transparent; color: var(–white); padding: 18px 48px; text-decoration: none; border: 2px solid var(–mid); transition: all .25s; display: inline-block; }
+.btn-ob:hover { border-color: var(–white); }
+.btn-ow { font-family: var(–sans); font-size: .72rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; background: transparent; color: var(–black); padding: 18px 48px; text-decoration: none; border: 2px solid var(–border); transition: all .25s; display: inline-block; }
+.btn-ow:hover { border-color: var(–black); }
 
-@keyframes up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-@keyframes pulse { 0%,100% { opacity: .28; } 50% { opacity: .85; } }
+/* ── SHARED ── */
+.sec { padding: 120px 64px; }
+.si { max-width: 1100px; margin: 0 auto; }
+.eyebrow { font-family: var(–sans); font-size: .68rem; font-weight: 500; letter-spacing: .26em; text-transform: uppercase; color: var(–gray); margin-bottom: 24px; }
+.eyebrow-lt { color: var(–gray); }
+h2.hl { font-family: var(–serif); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 700; line-height: 1.18; color: var(–black); }
+h2.hl em { font-style: italic; font-weight: 400; }
+h2.hl-lt { font-family: var(–serif); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 700; line-height: 1.18; color: var(–white); }
+h2.hl-lt em { font-style: italic; font-weight: 400; color: var(–lt); }
 
-/* SECTIONS */
-section { padding: 128px 64px; }
-.si { max-width: 1200px; margin: 0 auto; }
-.ey {
-font-family: var(–sans); font-size: .61rem; letter-spacing: .28em; text-transform: uppercase;
-color: var(–rose); margin-bottom: 22px;
-display: flex; align-items: center; gap: 14px;
+/* ── FOUNDER ── */
+#bridge { background: var(–dark); }
+.bridge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.bridge-img-wrap { position: relative; }
+.bridge-img {
+width: 100%; aspect-ratio: 4/5;
+background: var(–mid);
+display: flex; align-items: flex-end; padding: 32px;
+/* grayscale placeholder with cross pattern */
+background-image:
+linear-gradient(45deg, #2a2a2a 25%, transparent 25%),
+linear-gradient(-45deg, #2a2a2a 25%, transparent 25%),
+linear-gradient(45deg, transparent 75%, #2a2a2a 75%),
+linear-gradient(-45deg, transparent 75%, #2a2a2a 75%);
+background-size: 20px 20px;
+background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+background-color: #333;
 }
-.ey::after { content: ‘’; flex: 0 0 34px; height: 1px; background: var(–rose); opacity: .42; }
-.ey-lt { color: var(–rose-lt); }
-.ey-lt::after { background: var(–rose-lt); }
-h2.st { font-family: var(–serif); font-size: clamp(2.1rem,3.5vw,3.1rem); font-weight: 400; line-height: 1.22; color: var(–ink); }
-h2.st em { font-style: italic; color: var(–ink-mid); }
-h2.stl { font-family: var(–serif); font-size: clamp(2.1rem,3.5vw,3.1rem); font-weight: 400; line-height: 1.22; color: var(–iv-text); }
-h2.stl em { font-style: italic; color: var(–iv-dim); }
+.bridge-img-caption { font-family: var(–sans); font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; color: var(–gray); }
+.bridge-text { padding-top: 8px; }
+.bridge-quote {
+font-family: var(–serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-style: italic; font-weight: 400;
+color: var(–white); line-height: 1.5; margin-bottom: 36px;
+padding-left: 28px; border-left: 3px solid var(–white);
+}
+.bridge-body { font-family: var(–sans); font-size: 1rem; font-weight: 300; color: var(–lt); line-height: 1.9; margin-bottom: 20px; }
+.bridge-body strong { color: var(–white); font-weight: 500; }
+.bridge-stats { display: flex; gap: 48px; margin-top: 52px; padding-top: 40px; border-top: 1px solid #333; }
+.stat-n { font-family: var(–serif); font-size: 3.2rem; font-weight: 700; color: var(–white); line-height: 1; }
+.stat-t { font-family: var(–sans); font-size: .68rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(–gray); margin-top: 8px; line-height: 1.6; }
 
-/* BRIDGE */
-#bridge { background: var(–g-deep); }
-.bg-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 96px; align-items: center; margin-top: 72px; }
-.p-wrap { position: relative; }
-.p-img {
-width: 100%; aspect-ratio: 3/4;
-background: url(‘https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=85’) center 10%/cover;
+/* ── EXPERTISE ── */
+#expertise { background: var(–off); }
+.ex-intro-row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 80px; }
+.ex-intro-text { font-family: var(–sans); font-size: 1.05rem; font-weight: 300; color: var(–mid); line-height: 1.85; }
+.pillars { display: grid; grid-template-columns: repeat(3,1fr); }
+.pillar {
+background: var(–white); padding: 52px 40px;
+border: 1px solid var(–border); margin-right: -1px;
+transition: background .3s; cursor: default; position: relative; overflow: hidden;
 }
-.p-frame {
-position: absolute; inset: 0; border: 1px solid rgba(192,134,96,.26);
-transform: translate(16px,16px); pointer-events: none; transition: transform .4s;
-}
-.p-wrap:hover .p-frame { transform: translate(10px,10px); }
-.b-pull {
-font-family: var(–serif2); font-size: clamp(1.6rem,2.8vw,2.25rem); font-style: italic; font-weight: 300;
-color: var(–iv-text); line-height: 1.5; margin-bottom: 40px;
-padding-left: 30px; position: relative;
-}
-.b-pull::before { content: ‘’; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: var(–rose); }
-.b-para { font-family: var(–serif2); font-size: 1.07rem; color: var(–iv-dim); line-height: 1.9; margin-bottom: 22px; }
-.b-para span { color: var(–iv-text); font-style: italic; }
-.b-stats { display: flex; gap: 52px; margin-top: 52px; padding-top: 44px; border-top: 1px solid rgba(192,134,96,.16); }
-.b-stat-n { font-family: var(–serif); font-size: 2.6rem; font-weight: 400; color: var(–iv-text); line-height: 1; }
-.b-stat-t { font-family: var(–sans); font-size: .63rem; letter-spacing: .13em; text-transform: uppercase; color: var(–iv-dim); margin-top: 10px; line-height: 1.55; }
+.pillar:hover { background: var(–black); z-index: 1; }
+.pillar:hover .p-n { color: #222; }
+.pillar:hover .p-rule { background: var(–white); }
+.pillar:hover .p-title { color: var(–white); }
+.pillar:hover .p-desc { color: var(–gray); }
+.p-n { font-family: var(–serif); font-size: 5rem; font-weight: 700; color: var(–border); line-height: 1; margin-bottom: 24px; transition: color .3s; }
+.p-rule { width: 40px; height: 3px; background: var(–black); margin-bottom: 24px; transition: background .3s; }
+.p-title { font-family: var(–serif); font-size: 1.35rem; font-weight: 700; color: var(–black); margin-bottom: 16px; transition: color .3s; }
+.p-desc { font-family: var(–sans); font-size: .9rem; font-weight: 300; color: var(–mid); line-height: 1.85; transition: color .3s; }
 
-/* EXPERTISE */
-#expertise { background: var(–iv-warm); }
-.ex-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 80px; }
-.ex-intro { font-family: var(–serif2); font-size: 1.1rem; color: var(–ink-mid); line-height: 1.85; }
-.pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
-.pillar { background: var(–g-mid); padding: 56px 44px; position: relative; overflow: hidden; transition: background .4s, transform .4s; cursor: default; }
-.pillar:hover { background: var(–g-light); transform: translateY(-5px); }
-.pillar::before { content: ‘’; position: absolute; inset: 0; background: linear-gradient(140deg, rgba(192,134,96,.07) 0%, transparent 55%); }
-.p-num { font-family: var(–serif2); font-size: 4.5rem; font-style: italic; font-weight: 300; color: rgba(192,134,96,.13); line-height: 1; margin-bottom: 32px; }
-.p-bar { width: 28px; height: 2px; background: var(–rose); margin-bottom: 24px; opacity: .65; }
-.p-title { font-family: var(–serif); font-size: 1.3rem; font-weight: 500; color: var(–iv-text); line-height: 1.3; margin-bottom: 18px; }
-.p-desc { font-family: var(–sans); font-size: .83rem; color: var(–iv-dim); line-height: 1.85; font-weight: 300; }
+/* ── TESTIMONIAL ── */
+#testimonial { background: var(–black); padding: 120px 64px; text-align: center; }
+.test-quote { font-family: var(–serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-style: italic; font-weight: 400; color: var(–white); line-height: 1.55; max-width: 900px; margin: 0 auto 40px; }
+.test-rule { width: 48px; height: 2px; background: var(–gray); margin: 0 auto 28px; }
+.test-attr { font-family: var(–sans); font-size: .72rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: var(–gray); }
 
-/* TESTIMONIAL */
-#testimonial { background: var(–g-deep); padding: 108px 64px; text-align: center; position: relative; overflow: hidden; }
-#testimonial::before {
-content: ‘”’; font-family: var(–serif); font-size: 28rem; font-style: italic;
-position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
-color: rgba(192,134,96,.05); line-height: 1; pointer-events: none;
-}
-.t-div { width: 1px; height: 44px; background: linear-gradient(to bottom, var(–rose), transparent); margin: 0 auto 36px; opacity: .5; }
-.t-q { font-family: var(–serif2); font-size: clamp(1.5rem,3vw,2.25rem); font-style: italic; font-weight: 300; color: var(–iv-text); line-height: 1.65; max-width: 820px; margin: 0 auto 36px; position: relative; z-index: 1; }
-.t-a { font-family: var(–sans); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(–iv-dim); }
-
-/* SERVICES */
-#services { background: var(–iv); }
-.sv-hd { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; flex-wrap: wrap; gap: 28px; }
-.sv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+/* ── SERVICES ── */
+#services { background: var(–white); }
+.sv-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; flex-wrap: wrap; gap: 28px; }
+.sv-grid { display: grid; grid-template-columns: repeat(3,1fr); }
 .sv-card {
-background: var(–iv-warm); padding: 52px 44px; border: 1px solid rgba(26,43,31,.08);
-position: relative; overflow: hidden; cursor: default;
-transition: box-shadow .45s, transform .45s, border-color .45s;
+background: var(–white); padding: 52px 40px;
+border: 1px solid var(–border); margin-right: -1px;
+cursor: default; transition: background .3s; position: relative;
 }
-.sv-card:hover { box-shadow: 0 24px 64px rgba(26,43,31,.10); transform: translateY(-5px); border-color: rgba(192,134,96,.25); }
-.sv-card::before {
-content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-background: linear-gradient(to right, var(–rose), transparent);
-transform: scaleX(0); transform-origin: left; transition: transform .45s;
-}
+.sv-card:hover { background: var(–off); }
+.sv-card::before { content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(–black); transform: scaleX(0); transform-origin: left; transition: transform .35s; }
 .sv-card:hover::before { transform: scaleX(1); }
-.sv-n { font-family: var(–serif2); font-size: .8rem; font-style: italic; color: var(–ink-mute); letter-spacing: .1em; margin-bottom: 28px; }
-.sv-ico { width: 40px; height: 40px; border: 1px solid rgba(26,43,31,.14); display: flex; align-items: center; justify-content: center; margin-bottom: 28px; }
-.sv-ico svg { width: 18px; height: 18px; stroke: var(–ink-mid); fill: none; stroke-width: 1.4; }
-.sv-title { font-family: var(–serif); font-size: 1.45rem; font-weight: 500; color: var(–ink); margin-bottom: 18px; line-height: 1.3; }
-.sv-desc { font-family: var(–sans); font-size: .83rem; color: var(–ink-mute); line-height: 1.85; font-weight: 300; }
-.sv-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
-.sv-tag { font-family: var(–sans); font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; color: var(–ink-mid); border: 1px solid rgba(26,43,31,.17); padding: 5px 13px; }
+.sv-num { font-family: var(–sans); font-size: .7rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(–lt); margin-bottom: 20px; }
+.sv-title { font-family: var(–serif); font-size: 1.6rem; font-weight: 700; color: var(–black); margin-bottom: 20px; line-height: 1.25; }
+.sv-desc { font-family: var(–sans); font-size: .9rem; font-weight: 300; color: var(–mid); line-height: 1.85; }
+.sv-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.sv-tag { font-family: var(–sans); font-size: .62rem; font-weight: 500; letter-spacing: .11em; text-transform: uppercase; color: var(–mid); border: 1px solid var(–border); padding: 5px 14px; }
 
-/* CTA */
-#cta { background: var(–g-mid); padding: 148px 64px; text-align: center; position: relative; overflow: hidden; }
-#cta::before {
-content: ‘’; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-width: 800px; height: 800px;
-background: radial-gradient(circle, rgba(192,134,96,.08) 0%, transparent 62%); pointer-events: none;
-}
-.cta-orn { display: flex; align-items: center; justify-content: center; gap: 22px; margin-bottom: 36px; }
-.cta-orn-l { flex: 0 0 64px; height: 1px; background: rgba(192,134,96,.32); }
-.cta-orn-d { width: 5px; height: 5px; background: var(–rose); transform: rotate(45deg); opacity: .65; }
-.cta-lbl { font-family: var(–sans); font-size: .61rem; letter-spacing: .28em; text-transform: uppercase; color: var(–rose-lt); margin-bottom: 28px; }
-.cta-h { font-family: var(–serif); font-size: clamp(2.3rem,4.5vw,4rem); font-weight: 400; color: var(–iv-text); line-height: 1.2; margin-bottom: 24px; }
-.cta-h em { font-style: italic; color: var(–iv-dim); }
-.cta-sub { font-family: var(–serif2); font-size: 1.18rem; font-style: italic; color: var(–iv-dim); margin-bottom: 60px; }
-.cta-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+/* ── CTA ── */
+#cta { background: var(–off); padding: 140px 64px; text-align: center; }
+.cta-label { font-family: var(–sans); font-size: .7rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(–gray); margin-bottom: 28px; }
+.cta-h { font-family: var(–serif); font-size: clamp(2.6rem, 5vw, 4.5rem); font-weight: 700; color: var(–black); line-height: 1.15; margin-bottom: 24px; }
+.cta-h em { font-style: italic; font-weight: 400; }
+.cta-sub { font-family: var(–sans); font-size: 1.1rem; font-weight: 300; color: var(–mid); margin-bottom: 56px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 
-/* FOOTER */
-footer { background: var(–g-deep); padding: 52px 64px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; border-top: 1px solid rgba(192,134,96,.13); }
-.f-logo { font-family: var(–serif); font-size: 1rem; color: var(–iv-text); letter-spacing: .05em; }
-.f-copy { font-family: var(–sans); font-size: .64rem; letter-spacing: .1em; color: rgba(174,189,180,.35); }
+/* ── FOOTER ── */
+footer { background: var(–black); padding: 48px 64px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.f-logo { font-family: var(–serif); font-size: 1.1rem; color: var(–white); }
+.f-copy { font-family: var(–sans); font-size: .68rem; font-weight: 300; color: var(–gray); }
 .f-links { display: flex; gap: 32px; }
-.f-links a { font-family: var(–sans); font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; color: rgba(174,189,180,.42); text-decoration: none; transition: color .3s; }
-.f-links a:hover { color: var(–iv-text); }
+.f-links a { font-family: var(–sans); font-size: .68rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(–gray); text-decoration: none; transition: color .25s; }
+.f-links a:hover { color: var(–white); }
 
-/* MODAL */
-.m-overlay { position: fixed; inset: 0; background: rgba(10,18,13,.9); backdrop-filter: blur(10px); z-index: 999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .4s; }
-.m-overlay.open { opacity: 1; pointer-events: all; }
-.modal { background: var(–iv); max-width: 560px; width: 90%; padding: 68px 58px; position: relative; transform: translateY(28px); transition: transform .45s cubic-bezier(.4,0,.2,1); }
-.m-overlay.open .modal { transform: none; }
-.m-top { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(–rose), var(–rose-lt), transparent); }
-.m-close { position: absolute; top: 22px; right: 22px; background: none; border: none; cursor: pointer; font-size: 1rem; color: var(–ink-mute); transition: color .2s; }
-.m-close:hover { color: var(–ink); }
-.m-title { font-family: var(–serif); font-size: 1.85rem; font-weight: 400; color: var(–ink); margin-bottom: 8px; }
-.m-sub { font-family: var(–serif2); font-style: italic; font-size: 1rem; color: var(–ink-mute); margin-bottom: 40px; }
-.fg { margin-bottom: 22px; }
-.fg label { display: block; font-family: var(–sans); font-size: .61rem; letter-spacing: .15em; text-transform: uppercase; color: var(–ink-mute); margin-bottom: 9px; }
-.fg input,.fg textarea,.fg select {
-width: 100%; padding: 14px 16px; border: 1px solid rgba(26,43,31,.18); background: var(–iv-warm);
-font-family: var(–sans); font-size: .88rem; font-weight: 300; color: var(–ink);
-outline: none; transition: border-color .3s; appearance: none;
-}
-.fg input:focus,.fg textarea:focus,.fg select:focus { border-color: var(–g-mist); background: #fff; }
+/* ── MODAL ── */
+.m-ov { position: fixed; inset: 0; background: rgba(0,0,0,.9); z-index: 999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .35s; }
+.m-ov.open { opacity: 1; pointer-events: all; }
+.modal { background: var(–white); max-width: 560px; width: 90%; padding: 64px 56px; position: relative; border-top: 4px solid var(–black); transform: translateY(20px); transition: transform .35s; }
+.m-ov.open .modal { transform: none; }
+.m-x { position: absolute; top: 18px; right: 18px; background: none; border: none; cursor: pointer; font-size: 1.3rem; color: var(–gray); transition: color .2s; }
+.m-x:hover { color: var(–black); }
+.m-title { font-family: var(–serif); font-size: 2rem; font-weight: 700; color: var(–black); margin-bottom: 8px; }
+.m-sub { font-family: var(–sans); font-size: 1rem; font-weight: 300; color: var(–mid); margin-bottom: 36px; }
+.fg { margin-bottom: 20px; }
+.fg label { display: block; font-family: var(–sans); font-size: .66rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(–mid); margin-bottom: 8px; }
+.fg input, .fg textarea, .fg select { width: 100%; padding: 14px 16px; border: 1px solid var(–border); background: var(–off); font-family: var(–sans); font-size: .95rem; font-weight: 300; color: var(–black); outline: none; transition: border-color .25s; appearance: none; }
+.fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(–black); background: var(–white); }
 .fg textarea { height: 100px; resize: none; }
-.m-sub-btn { width: 100%; padding: 16px; background: var(–g-deep); color: var(–iv-text); border: none; font-family: var(–sans); font-size: .67rem; letter-spacing: .16em; text-transform: uppercase; cursor: pointer; transition: background .35s; font-weight: 400; }
-.m-sub-btn:hover { background: var(–g-mist); }
+.m-btn { width: 100%; padding: 16px; background: var(–black); color: var(–white); border: none; font-family: var(–sans); font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; cursor: pointer; transition: background .25s; }
+.m-btn:hover { background: var(–dark); }
 
-/* WHATSAPP */
-.wa { position: fixed; bottom: 34px; right: 34px; z-index: 200; width: 58px; height: 58px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.3); text-decoration: none; transition: transform .3s, box-shadow .3s; animation: wap 3s ease-in-out infinite; }
-.wa:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,.48); }
+/* ── WHATSAPP ── */
+.wa { position: fixed; bottom: 32px; right: 32px; z-index: 200; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,.3); transition: transform .25s; }
+.wa:hover { transform: scale(1.1); }
 .wa svg { width: 28px; height: 28px; fill: white; }
-@keyframes wap { 0%,100%{ box-shadow: 0 4px 20px rgba(37,211,102,.3); } 50%{ box-shadow: 0 4px 32px rgba(37,211,102,.5); } }
 
-/* RESPONSIVE */
+/* ── RESPONSIVE ── */
 @media (max-width: 960px) {
-section { padding: 88px 36px; }
-nav { padding: 24px 36px; }
-nav.sc { padding: 16px 36px; }
-.bg-grid { grid-template-columns: 1fr; gap: 52px; }
-.ex-head { grid-template-columns: 1fr; gap: 24px; }
-.pillars { grid-template-columns: 1fr; gap: 3px; }
-.sv-grid { grid-template-columns: 1fr; gap: 20px; }
+.sec { padding: 80px 32px; }
+nav { padding: 18px 32px; }
+#hero { padding: 120px 32px 80px; }
+.bridge-grid { grid-template-columns: 1fr; gap: 48px; }
+.ex-intro-row { grid-template-columns: 1fr; gap: 24px; }
+.pillars { grid-template-columns: 1fr; }
+.pillar { margin-right: 0; border-bottom: none; }
+.pillar:last-child { border-bottom: 1px solid var(–border); }
+.sv-grid { grid-template-columns: 1fr; }
+.sv-card { margin-right: 0; border-bottom: none; }
+.sv-grid .sv-card:last-child { border-bottom: 1px solid var(–border); }
 .n-links { display: none; }
-footer { padding: 40px 36px; flex-direction: column; align-items: flex-start; }
-.modal { padding: 52px 32px; }
-.h-corner { display: none; }
-#cta { padding: 96px 36px; }
+footer { padding: 40px 32px; flex-direction: column; align-items: flex-start; }
+.modal { padding: 48px 28px; }
+#cta { padding: 96px 32px; }
 }
-@media (max-width: 640px) {
-.h-acts,.cta-btns { flex-direction: column; align-items: center; }
-.b-stats { flex-direction: column; gap: 28px; }
-.sv-hd { flex-direction: column; align-items: flex-start; }
+@media (max-width: 600px) {
+.hero-acts, .cta-btns { flex-direction: column; align-items: flex-start; }
+.bridge-stats { flex-direction: column; gap: 28px; }
+.sv-head { flex-direction: column; align-items: flex-start; }
 }
 </style>
 
@@ -287,58 +227,50 @@ footer { padding: 40px 36px; flex-direction: column; align-items: flex-start; }
 
 <!-- NAV -->
 
-<nav id="nav">
+<nav>
   <div class="n-logo">Meridian &amp; Co.</div>
   <ul class="n-links">
     <li><a href="#bridge">Our Story</a></li>
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#services">Services</a></li>
   </ul>
-  <a href="#" class="n-cta" onclick="openM(); return false;">Begin Your Journey</a>
+  <a href="#" class="n-cta" onclick="openM();return false;">Begin Your Journey</a>
 </nav>
 
 <!-- HERO -->
 
 <section id="hero">
-  <div class="h-bg"></div>
-  <div class="h-corner tl"></div>
-  <div class="h-corner br"></div>
-  <div class="h-content">
-    <div class="h-eye">Bespoke Travel Curation &nbsp;·&nbsp; East &amp; West</div>
-    <h1 class="h-head">Two Continents.<br><em>Four Decades.</em><br>One Singular Vision.</h1>
-    <p class="h-sub">Bridging the East and the West through bespoke, one-on-one travel curation.</p>
-    <div class="h-acts">
-      <a href="#" class="btn-s" onclick="openM(); return false;">Book a Discovery Call</a>
-      <a href="#bridge" class="btn-g">Discover the Story</a>
+  <div class="hero-inner">
+    <div class="hero-label">Bespoke Travel Curation &nbsp;·&nbsp; East &amp; West</div>
+    <h1 class="hero-h1">Two Continents.<br><em>Four Decades.</em><br>One Singular Vision.</h1>
+    <p class="hero-sub">Bridging the East and the West through bespoke, one-on-one travel curation. Twenty years consulting Fortune 500 companies. Twenty years rooted in Chinese culture.</p>
+    <div class="hero-acts">
+      <a href="#" class="btn-w" onclick="openM();return false;">Book a Discovery Call</a>
+      <a href="#bridge" class="btn-ob">Discover the Story</a>
     </div>
-  </div>
-  <div class="h-scroll">
-    <span>Scroll</span>
-    <div class="h-line"></div>
   </div>
 </section>
 
 <!-- BRIDGE -->
 
-<section id="bridge">
+<section id="bridge" class="sec">
   <div class="si">
-    <div class="ey ey-lt fi">The Founder</div>
-    <div class="bg-grid">
-      <div class="fi">
-        <div class="p-wrap">
-          <div class="p-img"></div>
-          <div class="p-frame"></div>
+    <div class="bridge-grid">
+      <div>
+        <div class="bridge-img">
+          <span class="bridge-img-caption">Founder Portrait</span>
         </div>
       </div>
-      <div class="fi d1">
-        <h2 class="stl" style="margin-bottom:44px;">From Fortune 500<br>Boardrooms to <em>Hidden<br>Tea Trails.</em></h2>
-        <p class="b-pull">"I spent twenty years optimizing global systems. Then I realized — the greatest journey is one that defies the algorithm entirely."</p>
-        <p class="b-para">Born of Chinese heritage and shaped by two decades in America's most demanding corporate corridors, our founder carries a rare duality: the precision of a Fortune 500 consultant and the soul of someone who knows where the mist settles each morning on the Li River.</p>
-        <p class="b-para">That pivot — from <span>Systems</span> to <span>Soul</span> — is the philosophy behind every itinerary we craft. Rigorous. Intentional. Alive.</p>
-        <div class="b-stats">
-          <div><div class="b-stat-n">20</div><div class="b-stat-t">Years US Tech<br>Consulting</div></div>
-          <div><div class="b-stat-n">20</div><div class="b-stat-t">Years Deep<br>Chinese Heritage</div></div>
-          <div><div class="b-stat-n">1:1</div><div class="b-stat-t">Always Personal<br>Always You</div></div>
+      <div class="bridge-text">
+        <div class="eyebrow eyebrow-lt" style="margin-bottom:28px;">The Founder</div>
+        <h2 class="hl-lt" style="margin-bottom:44px;">From Fortune 500<br>Boardrooms to<br><em>Hidden Tea Trails.</em></h2>
+        <p class="bridge-quote">"I spent twenty years optimizing global systems. Then I realized — the greatest journey is one that defies the algorithm entirely."</p>
+        <p class="bridge-body">Born of Chinese heritage and shaped by two decades in America's most demanding corporate corridors, our founder carries a rare duality: the precision of a <strong>Fortune 500 consultant</strong> and the soul of someone who knows where the mist settles each morning on the Li River.</p>
+        <p class="bridge-body">That pivot — from <strong>Systems</strong> to <strong>Soul</strong> — is the philosophy behind every itinerary we craft. Rigorous. Intentional. Alive.</p>
+        <div class="bridge-stats">
+          <div><div class="stat-n">20</div><div class="stat-t">Years US<br>Consulting</div></div>
+          <div><div class="stat-n">20</div><div class="stat-t">Years Chinese<br>Heritage</div></div>
+          <div><div class="stat-n">1:1</div><div class="stat-t">Always<br>Personal</div></div>
         </div>
       </div>
     </div>
@@ -347,31 +279,31 @@ footer { padding: 40px 36px; flex-direction: column; align-items: flex-start; }
 
 <!-- EXPERTISE -->
 
-<section id="expertise">
+<section id="expertise" class="sec">
   <div class="si">
-    <div class="ex-head fi">
+    <div class="ex-intro-row">
       <div>
-        <div class="ey">The Value Proposition</div>
-        <h2 class="st">Three Pillars of an<br><em>Exceptional Journey</em></h2>
+        <div class="eyebrow">The Value Proposition</div>
+        <h2 class="hl">Three Pillars of an<br><em>Exceptional Journey</em></h2>
       </div>
-      <p class="ex-intro">Every experience we design rests on a foundation that cannot be replicated — a convergence of professional rigor, cultural intimacy, and boundless global perspective.</p>
+      <p class="ex-intro-text">Every experience we design rests on a foundation that cannot be replicated — a convergence of professional rigor, cultural intimacy, and boundless global perspective.</p>
     </div>
     <div class="pillars">
-      <div class="pillar fi">
-        <div class="p-num">01</div>
-        <div class="p-bar"></div>
+      <div class="pillar">
+        <div class="p-n">01</div>
+        <div class="p-rule"></div>
         <h3 class="p-title">Fortune 500 Precision</h3>
-        <p class="p-desc">Two decades of stress-testing complex global systems. Every transfer, reservation, and contingency mapped with enterprise rigor — so you travel with effortless confidence.</p>
+        <p class="p-desc">Two decades stress-testing complex global systems. Every transfer, reservation, and contingency mapped with enterprise rigor — so you travel with effortless confidence.</p>
       </div>
-      <div class="pillar fi d1">
-        <div class="p-num">02</div>
-        <div class="p-bar"></div>
+      <div class="pillar">
+        <div class="p-n">02</div>
+        <div class="p-rule"></div>
         <h3 class="p-title">Deep Cultural Roots</h3>
         <p class="p-desc">Insider access to China's most guarded secrets — ancient tea ceremonies, dawn hikes on untraveled paths, and living relationships built over a lifetime, not a guidebook.</p>
       </div>
-      <div class="pillar fi d2">
-        <div class="p-num">03</div>
-        <div class="p-bar"></div>
+      <div class="pillar">
+        <div class="p-n">03</div>
+        <div class="p-rule"></div>
         <h3 class="p-title">Global Perspective</h3>
         <p class="p-desc">While China is our greatest canvas, the world is our studio. From the Adriatic coast to Kyoto's back alleys — every journey tailored to the full dimension of who you are.</p>
       </div>
@@ -382,42 +314,39 @@ footer { padding: 40px 36px; flex-direction: column; align-items: flex-start; }
 <!-- TESTIMONIAL -->
 
 <section id="testimonial">
-  <div class="si">
-    <div class="t-div fi"></div>
-    <p class="t-q fi d1">"She didn't plan our trip to China. She curated a revelation. Every morning felt like discovering a secret the world hadn't yet named."</p>
-    <p class="t-a fi d2">— A Private Client, San Francisco</p>
+  <div class="si" style="max-width:1100px;margin:0 auto;">
+    <p class="test-quote">"She didn't plan our trip to China. She curated a revelation. Every morning felt like discovering a secret the world hadn't yet named."</p>
+    <div class="test-rule"></div>
+    <p class="test-attr">— A Private Client, San Francisco</p>
   </div>
 </section>
 
 <!-- SERVICES -->
 
-<section id="services">
+<section id="services" class="sec">
   <div class="si">
-    <div class="sv-hd">
+    <div class="sv-head">
       <div>
-        <div class="ey fi">What We Offer</div>
-        <h2 class="st fi">Services Crafted for<br><em>the Discerning Few</em></h2>
+        <div class="eyebrow">What We Offer</div>
+        <h2 class="hl">Services Crafted for<br><em>the Discerning Few</em></h2>
       </div>
-      <a href="#" class="btn-s fi" onclick="openM(); return false;">Inquire Now</a>
+      <a href="#" class="btn-b" onclick="openM();return false;" style="align-self:flex-end;">Inquire Now</a>
     </div>
     <div class="sv-grid">
-      <div class="sv-card fi">
-        <div class="sv-n">Service I</div>
-        <div class="sv-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="sv-card">
+        <div class="sv-num">Service I</div>
         <h3 class="sv-title">1-on-1 Private Guiding</h3>
         <p class="sv-desc">Travel alongside a guide fluent in both the language of the land and the language of luxury. Full-day private guiding in China and select global destinations — no groups, no compromise.</p>
         <div class="sv-tags"><span class="sv-tag">Exclusive Access</span><span class="sv-tag">Private</span><span class="sv-tag">Immersive</span></div>
       </div>
-      <div class="sv-card fi d1">
-        <div class="sv-n">Service II</div>
-        <div class="sv-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="sv-card">
+        <div class="sv-num">Service II</div>
         <h3 class="sv-title">Bespoke Itinerary Design</h3>
         <p class="sv-desc">From the first conversation to the final departure — every detail architected around you. Your pace, your passions, your definition of extraordinary. A living document that evolves as you do.</p>
         <div class="sv-tags"><span class="sv-tag">Fully Custom</span><span class="sv-tag">End-to-End</span><span class="sv-tag">Precision</span></div>
       </div>
-      <div class="sv-card fi d2">
-        <div class="sv-n">Service III</div>
-        <div class="sv-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <div class="sv-card">
+        <div class="sv-num">Service III</div>
         <h3 class="sv-title">Cultural Concierge</h3>
         <p class="sv-desc">Preparation, translation, protocol — the invisible architecture that transforms a visitor into an honored guest. Ongoing advisory for clients navigating China's culture, etiquette, and relationships.</p>
         <div class="sv-tags"><span class="sv-tag">Advisory</span><span class="sv-tag">Cultural Bridge</span><span class="sv-tag">Ongoing</span></div>
@@ -429,14 +358,13 @@ footer { padding: 40px 36px; flex-direction: column; align-items: flex-start; }
 <!-- CTA -->
 
 <section id="cta">
-  <div class="si">
-    <div class="cta-orn fi"><div class="cta-orn-l"></div><div class="cta-orn-d"></div><div class="cta-orn-l"></div></div>
-    <p class="cta-lbl fi">Begin Here</p>
-    <h2 class="cta-h fi">Let's Craft Your Next<br><em>Chapter of Exploration.</em></h2>
-    <p class="cta-sub fi d1">Every great journey begins with a single, honest conversation.</p>
-    <div class="cta-btns fi d2">
-      <a href="#" class="btn-dk" onclick="openM(); return false;">Book a Discovery Call</a>
-      <a href="https://wa.me/1234567890" class="btn-dg" target="_blank">Message on WhatsApp</a>
+  <div class="si" style="text-align:center;">
+    <p class="cta-label">Begin Here</p>
+    <h2 class="cta-h">Let's Craft Your Next<br><em>Chapter of Exploration.</em></h2>
+    <p class="cta-sub">Every great journey begins with a single, honest conversation.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-b" onclick="openM();return false;">Book a Discovery Call</a>
+      <a href="https://wa.me/1234567890" class="btn-ow" target="_blank">Message on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -449,22 +377,21 @@ footer { padding: 40px 36px; flex-direction: column; align-items: flex-start; }
   <div class="f-links">
     <a href="#">Privacy</a>
     <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
-    <a href="#" onclick="openM(); return false;">Contact</a>
+    <a href="#" onclick="openM();return false;">Contact</a>
   </div>
 </footer>
 
 <!-- WHATSAPP -->
 
-<a href="https://wa.me/1234567890" class="wa" target="_blank" title="Chat on WhatsApp">
+<a href="https://wa.me/1234567890" class="wa" target="_blank">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <!-- MODAL -->
 
-<div class="m-overlay" id="modal" onclick="closeOut(event)">
+<div class="m-ov" id="modal" onclick="closeOut(event)">
   <div class="modal">
-    <div class="m-top"></div>
-    <button class="m-close" onclick="closeM()">✕</button>
+    <button class="m-x" onclick="closeM()">✕</button>
     <h3 class="m-title">Begin Your Journey</h3>
     <p class="m-sub">Tell us a little about your vision. We'll respond within 24 hours.</p>
     <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name"></div>
@@ -482,36 +409,28 @@ footer { padding: 40px 36px; flex-direction: column; align-items: flex-start; }
       </select>
     </div>
     <div class="fg"><label>Tell Us About Your Vision</label><textarea placeholder="What are you hoping to discover, experience, or feel?"></textarea></div>
-    <button class="m-sub-btn" onclick="submitF()">Send My Inquiry</button>
+    <button class="m-btn" onclick="submitF()">Send My Inquiry</button>
   </div>
 </div>
 
 <script>
-  // Nav scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 60));
-
-  // Fade in
-  const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } }), { threshold: .1 });
-  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-
-  // Modal
-  function openM() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeM() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
-  function closeOut(e) { if (e.target === document.getElementById('modal')) closeM(); }
-  function submitF() {
-    const b = document.querySelector('.m-sub-btn');
-    b.textContent = 'Inquiry Sent ✓'; b.style.background = 'var(--g-mist)';
-    setTimeout(closeM, 1800);
-    setTimeout(() => { b.textContent = 'Send My Inquiry'; b.style.background = ''; }, 2600);
-  }
-
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     const h = a.getAttribute('href');
     if (h.length > 1 && !a.getAttribute('onclick'))
       a.addEventListener('click', e => { e.preventDefault(); document.querySelector(h)?.scrollIntoView({ behavior: 'smooth' }); });
   });
+
+  // Modal
+  function openM() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeM() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
+  function closeOut(e) { if (e.target === document.getElementById('modal')) closeM(); }
+  function submitF() {
+    const b = document.querySelector('.m-btn');
+    b.textContent = 'Inquiry Sent ✓';
+    setTimeout(closeM, 1800);
+    setTimeout(() => { b.textContent = 'Send My Inquiry'; }, 2600);
+  }
 </script>
 
 </body>
