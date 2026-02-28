@@ -9,6 +9,13 @@
 <meta name="supported-color-schemes" content="dark">
 <style>
   :root { color-scheme: dark; }
+
+@media (forced-colors: active) {
+html, body { background: #0D0B08 !important; forced-color-adjust: none; }
+}
+
+- { forced-color-adjust: none; }
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -283,7 +290,8 @@ footer { padding: 40px 32px; flex-direction: column; align-items: flex-start; }
 </style>
 
 </head>
-<body>
+<body bgcolor="#0D0B08" style="background:#0D0B08!important;background-color:#0D0B08!important">
+<div style="position:fixed;inset:0;background:#0D0B08;z-index:-9999;pointer-events:none;"></div>
 
 <!-- NAV -->
 
