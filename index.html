@@ -844,11 +844,11 @@ footer {
     <h2 class="cta-h">Let's Craft Your Next<br><em>Chapter of Exploration.</em></h2>
     <p class="cta-sub">Every great journey begins with a single, honest conversation.</p>
     <div class="cta-email">
-      <a href="/cdn-cgi/l/email-protection#86eeeeeef2ebf5c6e1ebe7efeaa8e5e9eb"><span class="__cf_email__" data-cfemail="89e1e1e1fde4fac9eee4e8e0e5a7eae6e4">[email&#160;protected]</span></a>
+      <a href="mailto:hhhtms@gmail.com">hhhtms@gmail.com</a>
     </div>
     <div class="cta-btns">
       <a href="#" class="btn-gold" onclick="openM();return false;">Book a Discovery Call</a>
-      <a href="/cdn-cgi/l/email-protection#680000001c051b280f05090104460b0705" class="btn-ghost">Send an Email</a>
+      <a href="mailto:hhhtms@gmail.com?subject=Travel%20Inquiry%20%E2%80%94%20Meridian%20%26%20Co." class="btn-ghost">Send an Email</a>
     </div>
   </div>
 </section>
@@ -858,7 +858,7 @@ footer {
 <footer>
   <div class="f-logo">Meridian &amp; Co.</div>
   <div class="f-center">
-    <a href="/cdn-cgi/l/email-protection#9af2f2f2eef7e9dafdf7fbf3f6b4f9f5f7" class="f-email"><span class="__cf_email__" data-cfemail="ed85858599809ead8a808c8481c38e8280">[email&#160;protected]</span></a>
+    <a href="mailto:hhhtms@gmail.com" class="f-email">hhhtms@gmail.com</a>
     <div class="f-copy">© 2025 Meridian &amp; Co. All rights reserved.</div>
   </div>
   <div class="f-links">
@@ -895,81 +895,77 @@ footer {
       </select>
     </div>
     <div class="fg"><label>Your Vision</label><textarea placeholder="What are you hoping to discover, experience, or feel?"></textarea></div>
-    <p class="m-note">Or reach us directly at <a href="/cdn-cgi/l/email-protection#cea6a6a6baa3bd8ea9a3afa7a2e0ada1a3"><span class="__cf_email__" data-cfemail="e58d8d8d918896a58288848c89cb868a88">[email&#160;protected]</span></a></p>
+    <p class="m-note">Or reach us directly at <a href="mailto:hhhtms@gmail.com">hhhtms@gmail.com</a></p>
     <button class="m-btn" onclick="submitF()">Send My Inquiry</button>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 60));
 
-const nav = document.getElementById(‘nav’);
-window.addEventListener(‘scroll’, () => nav.classList.toggle(‘sc’, scrollY > 60));
+  function openM() { document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeM() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; }
+  function closeOut(e) { if (e.target===document.getElementById('modal')) closeM(); }
+  async function submitF() {
+    const b = document.querySelector('.m-btn');
+    const name = document.querySelector('.m-ov input[type=text]').value.trim();
+    const email = document.querySelector('.m-ov input[type=email]').value.trim();
+    const dest = document.querySelector('.m-ov select').value;
+    const vision = document.querySelector('.m-ov textarea').value.trim();
 
-function openM() { document.getElementById(‘modal’).classList.add(‘open’); document.body.style.overflow=‘hidden’; }
-function closeM() { document.getElementById(‘modal’).classList.remove(‘open’); document.body.style.overflow=’’; }
-function closeOut(e) { if (e.target===document.getElementById(‘modal’)) closeM(); }
-async function submitF() {
-const b = document.querySelector(’.m-btn’);
-const name = document.querySelector(’.m-ov input[type=text]’).value.trim();
-const email = document.querySelector(’.m-ov input[type=email]’).value.trim();
-const dest = document.querySelector(’.m-ov select’).value;
-const vision = document.querySelector(’.m-ov textarea’).value.trim();
+    if (!name || !email) {
+      alert('Please enter your name and email address.');
+      return;
+    }
 
-```
-if (!name || !email) {
-  alert('Please enter your name and email address.');
-  return;
-}
+    b.textContent = 'Sending…';
+    b.disabled = true;
 
-b.textContent = 'Sending…';
-b.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/xeelyevv', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          destination: dest,
+          vision: vision,
+          _subject: '✦ New Inquiry — Meridian & Co. | ' + name,
+          _replyto: email
+        })
+      });
 
-try {
-  const res = await fetch('https://formspree.io/f/xeelyevv', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      name: name,
-      email: email,
-      destination: dest,
-      vision: vision,
-      _subject: '✦ New Inquiry — Meridian & Co. | ' + name,
-      _replyto: email
-    })
-  });
-
-  if (res.ok) {
-    b.textContent = 'Inquiry Sent ✓';
-    // Clear fields
-    document.querySelector('.m-ov input[type=text]').value = '';
-    document.querySelector('.m-ov input[type=email]').value = '';
-    document.querySelector('.m-ov select').value = '';
-    document.querySelector('.m-ov textarea').value = '';
-    setTimeout(closeM, 2000);
-  } else {
-    // Fallback: open mailto
-    const mailto = `mailto:hhhtms@gmail.com?subject=${encodeURIComponent('New Travel Inquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nDestination: ' + dest + '\n\nVision:\n' + vision)}`;
-    window.location.href = mailto;
-    b.textContent = 'Opening Email…';
-    setTimeout(closeM, 1500);
+      if (res.ok) {
+        b.textContent = 'Inquiry Sent ✓';
+        // Clear fields
+        document.querySelector('.m-ov input[type=text]').value = '';
+        document.querySelector('.m-ov input[type=email]').value = '';
+        document.querySelector('.m-ov select').value = '';
+        document.querySelector('.m-ov textarea').value = '';
+        setTimeout(closeM, 2000);
+      } else {
+        // Fallback: open mailto
+        const mailto = `mailto:hhhtms@gmail.com?subject=${encodeURIComponent('New Travel Inquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nDestination: ' + dest + '\n\nVision:\n' + vision)}`;
+        window.location.href = mailto;
+        b.textContent = 'Opening Email…';
+        setTimeout(closeM, 1500);
+      }
+    } catch(err) {
+      // Network error fallback — open Gmail directly
+      const mailto = `mailto:hhhtms@gmail.com?subject=${encodeURIComponent('New Travel Inquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nDestination: ' + dest + '\n\nVision:\n' + vision)}`;
+      window.location.href = mailto;
+      b.textContent = 'Opening Email…';
+      setTimeout(closeM, 1500);
+    } finally {
+      setTimeout(() => { b.textContent = 'Send My Inquiry'; b.disabled = false; }, 3000);
+    }
   }
-} catch(err) {
-  // Network error fallback — open Gmail directly
-  const mailto = `mailto:hhhtms@gmail.com?subject=${encodeURIComponent('New Travel Inquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nDestination: ' + dest + '\n\nVision:\n' + vision)}`;
-  window.location.href = mailto;
-  b.textContent = 'Opening Email…';
-  setTimeout(closeM, 1500);
-} finally {
-  setTimeout(() => { b.textContent = 'Send My Inquiry'; b.disabled = false; }, 3000);
-}
-```
-
-}
-document.querySelectorAll(‘a[href^=”#”]’).forEach(a => {
-const h = a.getAttribute(‘href’);
-if (h.length > 1 && !a.getAttribute(‘onclick’))
-a.addEventListener(‘click’, e => { e.preventDefault(); document.querySelector(h)?.scrollIntoView({ behavior: ‘smooth’ }); });
-});
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    const h = a.getAttribute('href');
+    if (h.length > 1 && !a.getAttribute('onclick'))
+      a.addEventListener('click', e => { e.preventDefault(); document.querySelector(h)?.scrollIntoView({ behavior: 'smooth' }); });
+  });
 </script>
 
 <!-- GEO: Rich entity content for AI crawlers (Googlebot, GPTBot, ClaudeBot, Gemini) -->
