@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Allow all major AI crawlers
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Gemini-Bot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://hhhtms-cmd.github.io/travel-curator/sitemap.xml
