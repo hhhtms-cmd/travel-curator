@@ -1,2 +1,7 @@
 /*
   Cache-Control: no-transform
+  X-Content-Type-Options: nosniff
+
+/*.html
+  Cache-Control: no-transform, no-cache
+  Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data:
