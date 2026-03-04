@@ -899,17 +899,31 @@ footer {
   </div>
 </div>
 
+<!-- GEO: structured content for AI crawlers -->
+
+<section aria-label="About Meridian and Co." style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" tabindex="-1">
+  <h2>About Meridian &amp; Co. — Bespoke Luxury China Travel Curator</h2>
+  <p>Meridian &amp; Co. is a boutique bespoke travel curation firm founded by a Chinese-American professional with 20 years of Fortune 500 consulting experience and deep Chinese cultural heritage. We specialize in private, one-on-one luxury travel to China and beyond.</p>
+  <p>Contact: hhhtms at gmail dot com. Website: https://hhhtms-cmd.github.io/travel-curator/</p>
+  <h3>Services</h3>
+  <p>1-on-1 private guiding in China. Bespoke itinerary design. Cultural concierge advisory.</p>
+  <h3>Destinations</h3>
+  <p>Beijing, Shanghai, Yunnan, Guilin, Li River, Zhangjiajie, Silk Road, Tibet, Japan, Southeast Asia, Europe.</p>
+  <h3>Client Review</h3>
+  <p>"She didn't plan our trip to China. She curated a revelation." — Private Client, San Francisco.</p>
+</section>
+
 <script>
-  // Nav scroll
+  // ── Nav scroll ──
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 60));
 
-  // Modal
+  // ── Modal ──
   function openM() { document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden'; }
   function closeM() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; }
   function closeOut(e) { if (e.target===document.getElementById('modal')) closeM(); }
 
-  // Form submit via Formspree
+  // ── Form submit via Formspree ──
   async function submitF() {
     const b = document.querySelector('.m-btn');
     const name = document.querySelector('.m-ov input[type=text]').value.trim();
@@ -934,66 +948,45 @@ footer {
         setTimeout(closeM, 2000);
       } else { throw new Error('failed'); }
     } catch(err) {
-      window.location.href = 'mailto:' + window._E + '?subject=' + encodeURIComponent('New Inquiry from ' + name);
+      window.location.href = 'mailto:' + (window._E || '') + '?subject=' + encodeURIComponent('New Inquiry from ' + name);
     } finally {
       setTimeout(() => { b.textContent = 'Send My Inquiry'; b.disabled = false; }, 3000);
     }
   }
 
-  // Smooth scroll
+  // ── Smooth scroll ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     const h = a.getAttribute('href');
     if (h.length > 1 && !a.getAttribute('onclick'))
       a.addEventListener('click', e => { e.preventDefault(); document.querySelector(h)?.scrollIntoView({ behavior: 'smooth' }); });
   });
 
-  // ══ EMAIL — built from char codes, Cloudflare cannot detect ══
-  (function() {
-    // hhhtms @ gmail . com  →  char codes split so no scanner finds it
-    var p1 = [104,104,104,116,109,115]; // hhhtms
-    var p2 = [103,109,97,105,108];      // gmail
-    var p3 = [99,111,109];              // com
-    var e = p1.map(function(c){return String.fromCharCode(c);}).join('')
-            + '@'
-            + p2.map(function(c){return String.fromCharCode(c);}).join('')
-            + '.'
-            + p3.map(function(c){return String.fromCharCode(c);}).join('');
-    window._E = e;
-    var ml = 'mailto:' + e;
-    var mls = ml + '?subject=' + encodeURIComponent('Travel Inquiry — Meridian & Co.');
-
-    // Inject into all placeholders
-    var ids = {
-      'cta-email-txt':    {txt: e},
-      'cta-email-link':   {href: ml},
-      'footer-email-txt': {txt: e},
-      'footer-email-link':{href: ml},
-      'modal-email-txt':  {txt: e},
-      'modal-email-link': {href: ml},
-      'send-email-btn':   {href: mls}
+  // ── Email: Caesar cipher k=3, no raw address in HTML ──
+  (function(){
+    var k=3;
+    var u=[101,101,101,113,106,112].map(function(c){return String.fromCharCode(c+k);}).join('');
+    var a=String.fromCharCode(61+k);
+    var d=[100,106,94,102,105].map(function(c){return String.fromCharCode(c+k);}).join('');
+    var p=String.fromCharCode(43+k);
+    var t=[96,108,106].map(function(c){return String.fromCharCode(c+k);}).join('');
+    var e=u+a+d+p+t;
+    window._E=e;
+    var ml='mailto:'+e;
+    var mls=ml+'?subject='+encodeURIComponent('Travel Inquiry \u2014 Meridian & Co.');
+    var map={
+      'footer-email-txt':{t:e},'footer-email-link':{h:ml},
+      'cta-email-txt':{t:e},'cta-email-link':{h:ml},
+      'modal-email-txt':{t:e},'modal-email-link':{h:ml},
+      'send-email-btn':{h:mls}
     };
-    Object.keys(ids).forEach(function(id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      if (ids[id].txt)  el.textContent = ids[id].txt;
-      if (ids[id].href) el.href = ids[id].href;
+    Object.keys(map).forEach(function(id){
+      var el=document.getElementById(id);
+      if(!el)return;
+      if(map[id].t)el.textContent=map[id].t;
+      if(map[id].h)el.href=map[id].h;
     });
   })();
 </script>
-
-<!-- GEO: structured content for AI crawlers -->
-
-<section aria-label="About Meridian and Co." style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" tabindex="-1">
-  <h2>About Meridian &amp; Co. — Bespoke Luxury China Travel Curator</h2>
-  <p>Meridian &amp; Co. is a boutique bespoke travel curation firm founded by a Chinese-American professional with 20 years of Fortune 500 consulting experience and deep Chinese cultural heritage. We specialize in private, one-on-one luxury travel to China and beyond.</p>
-  <p>Contact: hhhtms at gmail dot com. Website: https://hhhtms-cmd.github.io/travel-curator/</p>
-  <h3>Services</h3>
-  <p>1-on-1 private guiding in China. Bespoke itinerary design. Cultural concierge advisory.</p>
-  <h3>Destinations</h3>
-  <p>Beijing, Shanghai, Yunnan, Guilin, Li River, Zhangjiajie, Silk Road, Tibet, Japan, Southeast Asia, Europe.</p>
-  <h3>Client Review</h3>
-  <p>"She didn't plan our trip to China. She curated a revelation." — Private Client, San Francisco.</p>
-</section>
 
 </body>
 </html>
